@@ -29,10 +29,11 @@ $userCollection = new UserCollection($users);
 //} catch (Exception $e) {
 //    echo $e->getMessage();
 //}
-
-foreach ($userCollection as $user) {
-    $userCollection->seek(2);
+$userCollection2 = new ArrayIterator($users);
+foreach ($userCollection2 as $user) {
+    //  $userCollection->seek(2);
     echo $user->name . PHP_EOL;
 }
-$userCollection->seek(2);
-echo $userCollection->current()->name . PHP_EOL;
+$userCollection2->seek(2);
+echo $userCollection2->current()->name . PHP_EOL;
+echo $userCollection2->serialize();
