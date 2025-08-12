@@ -2,7 +2,11 @@
 
 namespace App\Iterators;
 
-class UserCollection implements \Iterator
+use ArrayAccess;
+use Countable;
+use SeekableIterator;
+
+class UserCollection implements SeekableIterator, Countable, ArrayAccess
 {
     /** @var int The current position of the iterator. */
     private int $index = 0;
@@ -12,7 +16,7 @@ class UserCollection implements \Iterator
      *
      * @param User[] $users An array of User objects to iterate over.
      */
-    public function __construct(private readonly array $users = [])
+    public function __construct(private array $users = [])
     {
     }
 
@@ -83,5 +87,45 @@ class UserCollection implements \Iterator
     public function rewind(): void
     {
         $this->index = 0;
+    }
+
+    public function count(): int
+    {
+        return count($this->users);
+    }
+
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->users[$offset]);
+    }
+
+    public function offsetGet(mixed $offset): User
+    {
+        if (!isset($this->users[$offset])) {
+            throw new \OutOfBoundsException("No element at index {$offset}");
+        }
+        return $this->users[$offset];
+    }
+
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        if (is_null($offset)) {
+            $this->users[] = $value;
+        } else {
+            $this->users[$offset] = $value;
+        }
+    }
+
+    public function offsetUnset(mixed $offset): void
+    {
+        unset($this->users[$offset]);
+    }
+
+    public function seek(int $offset): void
+    {
+        if (!isset($this->users[$offset])) {
+            throw new \OutOfBoundsException("No element at index {$offset}");
+        }
+        $this->index = $offset;
     }
 }
