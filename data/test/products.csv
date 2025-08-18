@@ -1,0 +1,10 @@
+sku,product_name,description,category_id,price,stock_quantity,is_active
+LP1001,ProBook Laptop 15,"A powerful 15-inch laptop, ideal for professionals and students.",101,1299.99,50,1
+MS2002,Wireless Optical Mouse,"Ergonomic mouse with 2.4GHz wireless technology.",101,24.50,250,1
+BK3003,The Art of Programming,"A classic computer science book, covering algorithms and data structures.",102,49.95,120,1
+CM4004,Espresso Coffee Machine,"Brews delicious espresso and cappuccino with a built-in milk frother.",103,199.00,75,0
+DC5005,Ergonomic Office Chair,"Adjustable chair for long hours of comfort.",104,349.50,40,1
+SP6006,Galaxy Smartphone X1,"Latest generation smartphone with a stunning OLED display.",101,899.99,110,1
+HD7007,External SSD 1TB,"High-speed portable storage, USB-C compatible.",105,89.90,300,1
+FP7007,"LAPTOP","High-speed portable storage, USB-C compatible.",105,89.90,300,1
+FP7007,"Gaming Laptop","High-speed portable storage, USB-C compatible.",105,1599.9,30,1
